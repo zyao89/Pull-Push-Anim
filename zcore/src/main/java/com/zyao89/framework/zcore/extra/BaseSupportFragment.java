@@ -12,7 +12,7 @@ import com.zyao89.framework.zcore.base.IBasePresenter;
  * 增强Fragment
  * Created by zyao89 on 2017/1/20.
  */
-public abstract class BaseSupportFragment<P extends IBasePresenter> extends BaseFragment<P> implements IFragmentManager
+public abstract class BaseSupportFragment<P extends IBasePresenter> extends BaseFragment<P> implements IFragmentMethod
 {
     @Override
     public final void pushFragments(@IdRes int contentId, @NonNull BaseFragment fragment)

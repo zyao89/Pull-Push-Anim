@@ -8,7 +8,7 @@ import com.zyao89.framework.zcore.base.BaseFragment;
 /**
  * Created by zyao89 on 2017/1/20.
  */
-public interface IFragmentManager
+public interface IFragmentMethod
 {
     void pushFragments(@IdRes int contentId, @NonNull BaseFragment fragment);
 

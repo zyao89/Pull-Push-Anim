@@ -13,7 +13,7 @@ import com.zyao89.framework.zcore.base.IBasePresenter;
  * FragmentActivity
  * Created by zyao89 on 2017/1/20.
  */
-public abstract class BaseFragmentActivity<P extends IBasePresenter> extends BaseActivity<P> implements IFragmentManager
+public abstract class BaseFragmentActivity<P extends IBasePresenter> extends BaseActivity<P> implements IFragmentMethod
 {
     @Override
     public final void pushFragments(@IdRes int contentId, @NonNull BaseFragment fragment)

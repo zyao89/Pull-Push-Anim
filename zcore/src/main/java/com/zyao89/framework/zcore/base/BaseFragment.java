@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zyao89.framework.zcore.extra.IFragmentManager;
 import com.zyao89.framework.zcore.utils.FragmentManager;
 
 /**
