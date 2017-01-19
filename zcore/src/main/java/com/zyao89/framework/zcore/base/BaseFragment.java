@@ -20,7 +20,6 @@ import com.zyao89.framework.zcore.utils.FragmentManager;
  */
 public abstract class BaseFragment<P extends IBasePresenter> extends Fragment implements IViewCompact<P>, IBaseViewHandler
 {
-
     protected P                  mPresenter;
     private   OnFragmentCallback mOnFragmentCallback;
 

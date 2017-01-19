@@ -40,7 +40,8 @@ public class MainActivity extends BaseActivity<ITestCompact.IPresenter> implemen
             {
                 System.out.println("11111");
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.setCustomAnimations(R.anim.move_right_in_activity, R.anim.move_right_out_activity, R.anim.move_right_in_activity, R.anim.move_right_out_activity);
+//                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 int id = R.id.content;
                 transaction.replace(id, blankFragment);
                 transaction.addToBackStack(blankFragment.getClass().getSimpleName());

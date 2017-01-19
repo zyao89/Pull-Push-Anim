@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.zyao89.framework.zcore.R;
 import com.zyao89.framework.zcore.utils.ActivityManager;
 
 /**
@@ -74,6 +75,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     @Override
     protected final void onDestroy()
     {
+        overridePendingTransition(R.anim.move_left_in_activity, R.anim.move_right_out_activity);
         super.onDestroy();
         onExit();
         if (mPresenter != null && mPresenter instanceof BasePresenter)

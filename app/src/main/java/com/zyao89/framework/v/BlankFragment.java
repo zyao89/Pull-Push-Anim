@@ -41,7 +41,6 @@ public class BlankFragment extends BaseFragment<ITestCompact.IPresenter> {
             public void onClick(View v) {
                 System.out.println("11111");
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.replace(R.id.content, blankFragment);
                 transaction.addToBackStack(blankFragment.getClass().getSimpleName());
                 transaction.commit();
