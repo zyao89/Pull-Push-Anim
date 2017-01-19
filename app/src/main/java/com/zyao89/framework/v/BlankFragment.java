@@ -10,9 +10,11 @@ import com.zyao89.framework.R;
 import com.zyao89.framework.p.MainPresenter;
 import com.zyao89.framework.zcore.base.BaseFragment;
 import com.zyao89.framework.zcore.base.FragmentFactory;
+import com.zyao89.framework.zcore.extra.BaseSupportFragment;
 
 
-public class BlankFragment extends BaseFragment<ITestCompact.IPresenter> {
+public class BlankFragment extends BaseSupportFragment<ITestCompact.IPresenter>
+{
 
     @Override
     public void onPrepareCreate(Bundle savedInstanceState)
@@ -40,10 +42,7 @@ public class BlankFragment extends BaseFragment<ITestCompact.IPresenter> {
             @Override
             public void onClick(View v) {
                 System.out.println("11111");
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.content, blankFragment);
-                transaction.addToBackStack(blankFragment.getClass().getSimpleName());
-                transaction.commit();
+                pushFragments(R.id.content, blankFragment);
             }
         });
 

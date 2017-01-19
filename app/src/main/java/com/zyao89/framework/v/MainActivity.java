@@ -10,8 +10,9 @@ import com.zyao89.framework.R;
 import com.zyao89.framework.p.MainPresenter;
 import com.zyao89.framework.zcore.base.BaseActivity;
 import com.zyao89.framework.zcore.base.FragmentFactory;
+import com.zyao89.framework.zcore.extra.BaseFragmentActivity;
 
-public class MainActivity extends BaseActivity<ITestCompact.IPresenter> implements ITestCompact.IViewHandler
+public class MainActivity extends BaseFragmentActivity<ITestCompact.IPresenter> implements ITestCompact.IViewHandler
 {
     private BlankFragment blankFragment;
 
@@ -39,13 +40,7 @@ public class MainActivity extends BaseActivity<ITestCompact.IPresenter> implemen
             public void onClick(View v)
             {
                 System.out.println("11111");
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.move_right_in_activity, R.anim.move_right_out_activity, R.anim.move_right_in_activity, R.anim.move_right_out_activity);
-//                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                int id = R.id.content;
-                transaction.replace(id, blankFragment);
-                transaction.addToBackStack(blankFragment.getClass().getSimpleName());
-                transaction.commit();
+                pushFragments(R.id.content, blankFragment);
             }
         });
     }
