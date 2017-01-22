@@ -3,15 +3,18 @@ package com.zyao89.framework.zcore.base;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 
 import com.zyao89.framework.zcore.R;
 import com.zyao89.framework.zcore.utils.ActivityManager;
+import com.zyao89.framework.zcore.utils.TranslucentBarStatusManager;
 
 /**
  * Activity基类
@@ -21,6 +24,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
 {
     protected P    mPresenter;
     private   View mRootView;
+    private TranslucentBarStatusManager mTranslucentBarStatusManager;
 
     @Override
     public final void onCreate(Bundle savedInstanceState, PersistableBundle persistentState)
@@ -32,6 +36,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     protected final void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        initTranslucentBarStatus();
         onPrepareCreate(savedInstanceState);
         ActivityManager.getInstance().addActivity(this);
         @LayoutRes int layoutID = loadLayout();
@@ -41,6 +46,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
             if (mRootView != null)
             {
                 setContentView(mRootView);
+                fixFirstViewFitsSystemWindows();
                 initViews();
             }
         }
@@ -53,6 +59,27 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
             ((BasePresenter) mPresenter).attachViewHandler(this);
         }
     }
+
+    private void fixFirstViewFitsSystemWindows()
+    {
+        mTranslucentBarStatusManager.initTranslucentBarFitsSystemWindows();
+    }
+
+    /**
+     * 初始化透明状态栏
+     */
+    private void initTranslucentBarStatus()
+    {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        mTranslucentBarStatusManager= new TranslucentBarStatusManager(this);
+        mTranslucentBarStatusManager.initTranslucentBarStatus();
+    }
+
+    protected void setStatusBarColor(@ColorInt int color)
+    {
+        mTranslucentBarStatusManager.setStatusBarColor(color);
+    }
+
 
     @Override
     public void onPrepareCreate(Bundle savedInstanceState)

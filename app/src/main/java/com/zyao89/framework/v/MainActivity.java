@@ -1,5 +1,6 @@
 package com.zyao89.framework.v;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -19,7 +20,7 @@ public class MainActivity extends BaseFragmentActivity<ITestCompact.IPresenter> 
     @Override
     public void onPrepareCreate(Bundle savedInstanceState)
     {
-
+        setStatusBarColor(Color.YELLOW);
     }
 
     @Override
