@@ -85,6 +85,7 @@ public class TranslucentBarStatusManager
 
     /**
      * 设置状态栏颜色
+     *
      * @param color 颜色
      */
     public void setStatusBarColor(@ColorInt int color)
@@ -101,6 +102,7 @@ public class TranslucentBarStatusManager
 
     /**
      * 获取状态栏高度
+     *
      * @return
      */
     public int getStatusBarHeight()

@@ -20,11 +20,12 @@ import com.zyao89.framework.zcore.utils.TranslucentBarStatusManager;
  * Activity基类
  * Created by zyao89 on 2017/1/13.
  */
-public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatActivity implements IViewCompact<P>, IBaseViewHandler, OnFragmentCallback
+public abstract class BaseActivity<P> extends AppCompatActivity implements IBaseLifeCycleCompact<P>, OnFragmentCallback
 {
-    protected P    mPresenter;
-    private   View mRootView;
-    private TranslucentBarStatusManager mTranslucentBarStatusManager;
+    protected final String TAG = this.getClass().getSimpleName();
+    protected P                           mPresenter;
+    private   View                        mRootView;
+    private   TranslucentBarStatusManager mTranslucentBarStatusManager;
 
     @Override
     public final void onCreate(Bundle savedInstanceState, PersistableBundle persistentState)
@@ -71,7 +72,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     private void initTranslucentBarStatus()
     {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        mTranslucentBarStatusManager= new TranslucentBarStatusManager(this);
+        mTranslucentBarStatusManager = new TranslucentBarStatusManager(this);
         mTranslucentBarStatusManager.initTranslucentBarStatus();
     }
 

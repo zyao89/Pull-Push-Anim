@@ -18,8 +18,9 @@ import com.zyao89.framework.zcore.utils.FragmentManager;
  * Fragment基类
  * Created by zyao89 on 2017/1/13.
  */
-public abstract class BaseFragment<P extends IBasePresenter> extends Fragment implements IViewCompact<P>, IBaseViewHandler
+public abstract class BaseFragment<P> extends Fragment implements IBaseLifeCycleCompact<P>
 {
+    protected Activity           mActivity;
     protected P                  mPresenter;
     private   OnFragmentCallback mOnFragmentCallback;
 
@@ -105,6 +106,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
     public final void onAttach(Activity activity)
     {
         super.onAttach(activity);
+        mActivity = activity;
         if (activity instanceof OnFragmentCallback)
         {
             mOnFragmentCallback = (OnFragmentCallback) activity;

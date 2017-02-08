@@ -6,7 +6,8 @@ import android.support.v4.app.Fragment;
  * Created by zyao89 on 2017/1/14.
  */
 
-public interface IFragmentManager {
+public interface IFragmentManager
+{
     void addFragment(Fragment fragment);
 
     Fragment currentFragment();

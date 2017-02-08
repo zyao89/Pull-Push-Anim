@@ -13,9 +13,8 @@ import java.util.Stack;
 public class ActivityManager implements IActivityManager
 {
     private static final String TAG = "ActivityManager";
-
     private static volatile IActivityManager instance;
-    private Stack<Activity> mActivityStack;
+    private                 Stack<Activity>  mActivityStack;
 
     private ActivityManager()
     {
@@ -25,7 +24,7 @@ public class ActivityManager implements IActivityManager
         }
     }
 
-    public static IActivityManager getInstance ()
+    public static IActivityManager getInstance()
     {
         if (instance == null)
         {
@@ -41,7 +40,7 @@ public class ActivityManager implements IActivityManager
     }
 
     @Override
-    public synchronized void addActivity (Activity activity)
+    public synchronized void addActivity(Activity activity)
     {
         if (activity == null)
         {
@@ -55,19 +54,19 @@ public class ActivityManager implements IActivityManager
     }
 
     @Override
-    public synchronized Activity currentActivity ()
+    public synchronized Activity currentActivity()
     {
         return mActivityStack.lastElement();
     }
 
     @Override
-    public synchronized void removeLastActivity ()
+    public synchronized void removeLastActivity()
     {
         removeActivity(mActivityStack.lastElement());
     }
 
     @Override
-    public synchronized void removeActivity (Activity activity)
+    public synchronized void removeActivity(Activity activity)
     {
         if (activity == null)
         {
@@ -77,7 +76,7 @@ public class ActivityManager implements IActivityManager
     }
 
     @Override
-    public synchronized void removeActivity (Class<? extends Activity> clazz)
+    public synchronized void removeActivity(Class<? extends Activity> clazz)
     {
         if (null == clazz)
         {
@@ -93,7 +92,7 @@ public class ActivityManager implements IActivityManager
     }
 
     @Override
-    public synchronized Activity getActivity (Class<? extends Activity> clazz)
+    public synchronized Activity getActivity(Class<? extends Activity> clazz)
     {
         if (null == clazz)
         {
@@ -110,7 +109,7 @@ public class ActivityManager implements IActivityManager
     }
 
     @Override
-    public synchronized boolean containsActivity (Activity activity)
+    public synchronized boolean containsActivity(Activity activity)
     {
         if (null == activity)
         {
@@ -120,7 +119,7 @@ public class ActivityManager implements IActivityManager
     }
 
     @Override
-    public synchronized void finishAllActivity ()
+    public synchronized void finishAllActivity()
     {
         for (int i = 0, size = mActivityStack.size(); i < size; i++)
         {
@@ -130,5 +129,27 @@ public class ActivityManager implements IActivityManager
             }
         }
         mActivityStack.clear();
+    }
+
+    @Override
+    public synchronized Activity getLatestActivity()
+    {
+        int count = mActivityStack.size();
+        if (count == 0)
+        {
+            return null;
+        }
+        return mActivityStack.get(count - 1);
+    }
+
+    @Override
+    public synchronized Activity getPreviousActivity()
+    {
+        int count = mActivityStack.size();
+        if (count < 2)
+        {
+            return null;
+        }
+        return mActivityStack.get(count - 2);
     }
 }

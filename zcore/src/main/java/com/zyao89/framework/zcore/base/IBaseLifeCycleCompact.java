@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
+ * Activity协议
  * Created by zyao89 on 2017/1/13.
  */
-
-interface IViewCompact<P extends IBasePresenter> {
+interface IBaseLifeCycleCompact<P>
+{
 
     void onPrepareCreate(Bundle savedInstanceState);
 

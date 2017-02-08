@@ -10,22 +10,28 @@ import java.util.Stack;
  * Author: Zyao89
  * Time: 2016/7/19 20:07
  */
-public class FragmentManager implements IFragmentManager {
-    private static final String TAG = "ActivityManager";
-
+public class FragmentManager implements IFragmentManager
+{
+    private static final String TAG = "FragmentManager";
     private static volatile IFragmentManager instance;
-    private Stack<Fragment> mFragmentStack;
+    private                 Stack<Fragment>  mFragmentStack;
 
-    private FragmentManager() {
-        if (mFragmentStack == null) {
+    private FragmentManager()
+    {
+        if (mFragmentStack == null)
+        {
             mFragmentStack = new Stack<>();
         }
     }
 
-    public static IFragmentManager getInstance() {
-        if (instance == null) {
-            synchronized (IActivityManager.class) {
-                if (instance == null) {
+    public static IFragmentManager getInstance()
+    {
+        if (instance == null)
+        {
+            synchronized (IActivityManager.class)
+            {
+                if (instance == null)
+                {
                     instance = new FragmentManager();
                 }
             }
@@ -34,53 +40,68 @@ public class FragmentManager implements IFragmentManager {
     }
 
     @Override
-    public synchronized void addFragment(Fragment fragment) {
-        if (fragment == null) {
+    public synchronized void addFragment(Fragment fragment)
+    {
+        if (fragment == null)
+        {
             return;
         }
-        if (containsFragment(fragment)) {
+        if (containsFragment(fragment))
+        {
             return;
         }
         mFragmentStack.add(fragment);
     }
 
     @Override
-    public synchronized Fragment currentFragment() {
+    public synchronized Fragment currentFragment()
+    {
         return mFragmentStack.lastElement();
     }
 
     @Override
-    public synchronized void removeLastFragment() {
+    public synchronized void removeLastFragment()
+    {
         removeFragment(mFragmentStack.lastElement());
     }
 
     @Override
-    public synchronized void removeFragment(Fragment fragment) {
-        if (fragment == null) {
+    public synchronized void removeFragment(Fragment fragment)
+    {
+        if (fragment == null)
+        {
             return;
         }
         mFragmentStack.remove(fragment);
     }
 
     @Override
-    public synchronized void removeFragment(Class<? extends Fragment> clazz) {
-        if (null == clazz) {
+    public synchronized void removeFragment(Class<? extends Fragment> clazz)
+    {
+        if (null == clazz)
+        {
             return;
         }
-        for (Fragment fragment : mFragmentStack) {
-            if (fragment.getClass().equals(clazz)) {
+        for (Fragment fragment : mFragmentStack)
+        {
+            if (fragment.getClass().equals(clazz))
+            {
                 removeFragment(fragment);
             }
         }
     }
 
     @Override
-    public synchronized Fragment getFragment(Class<? extends Fragment> clazz) {
-        if (null == clazz) {
+    public synchronized Fragment getFragment(Class<? extends Fragment> clazz)
+    {
+        if (null == clazz)
+        {
             return null;
         }
-        for (Fragment fragment : mFragmentStack) {
-            if (fragment.getClass().equals(clazz)) {
+        for (Fragment fragment : mFragmentStack)
+        {
+            if (fragment.getClass().equals(clazz))
+            {
                 return fragment;
             }
         }
@@ -88,15 +109,18 @@ public class FragmentManager implements IFragmentManager {
     }
 
     @Override
-    public synchronized boolean containsFragment(Fragment fragment) {
-        if (null == fragment) {
+    public synchronized boolean containsFragment(Fragment fragment)
+    {
+        if (null == fragment)
+        {
             return false;
         }
         return mFragmentStack.contains(fragment);
     }
 
     @Override
-    public synchronized void removeAllFragment() {
+    public synchronized void removeAllFragment()
+    {
         mFragmentStack.clear();
     }
 }

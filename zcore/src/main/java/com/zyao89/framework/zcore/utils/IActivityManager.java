@@ -10,19 +10,23 @@ import android.app.Activity;
  */
 public interface IActivityManager
 {
-    void addActivity (Activity activity);
+    void addActivity(Activity activity);
 
     Activity currentActivity();
 
     void removeLastActivity();
 
-    void removeActivity (Activity activity);
+    void removeActivity(Activity activity);
 
-    void removeActivity (Class<? extends Activity> clazz);
+    void removeActivity(Class<? extends Activity> clazz);
 
-    Activity getActivity (Class<? extends Activity> clazz);
+    Activity getActivity(Class<? extends Activity> clazz);
 
-    boolean containsActivity (Activity activity);
+    boolean containsActivity(Activity activity);
 
     void finishAllActivity();
+
+    Activity getLatestActivity();
+
+    Activity getPreviousActivity();
 }
