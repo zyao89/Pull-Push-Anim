@@ -1,14 +1,12 @@
 package com.zyao89.framework.v;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
 
 import com.zyao89.framework.compact.ITestCompact;
 import com.zyao89.framework.R;
 import com.zyao89.framework.p.MainPresenter;
-import com.zyao89.framework.zcore.base.BaseFragment;
 import com.zyao89.framework.zcore.base.FragmentFactory;
 import com.zyao89.framework.zcore.extra.BaseSupportFragment;
 
@@ -42,7 +40,7 @@ public class BlankFragment extends BaseSupportFragment<ITestCompact.IPresenter>
             @Override
             public void onClick(View v) {
                 System.out.println("11111");
-                pushFragments(R.id.content, blankFragment);
+                pushFragment(R.id.content, blankFragment);
             }
         });
 

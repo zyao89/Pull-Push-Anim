@@ -11,11 +11,45 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zyao89.framework.v.MainActivity">
 
-    <TextView
-        android:id="@+id/haha"
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="入栈" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="出栈" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="出栈到第一个" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="全部出栈" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="TEST Remove" />
 
     <FrameLayout
         android:id="@+id/content"
