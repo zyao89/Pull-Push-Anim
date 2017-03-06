@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.zyao89.framework.zcore.app.ZCore;
+import com.zyao89.framework.zrouter.ZRouter;
 
 /**
  * Created by zyao89 on 2017/2/8.
@@ -11,9 +12,10 @@ import com.zyao89.framework.zcore.app.ZCore;
 public class App extends Application
 {
     @Override
-    protected void attachBaseContext(Context base)
+    public void onCreate()
     {
-        super.attachBaseContext(base);
+        super.onCreate();
+        ZRouter.getInstance().init(this);
         ZCore.getInstance().init(this);
     }
 }

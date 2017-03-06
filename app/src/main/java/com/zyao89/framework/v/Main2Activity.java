@@ -1,17 +1,34 @@
 package com.zyao89.framework.v;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.zyao89.framework.R;
+import com.zyao89.framework.zcore.extra.swipeback.SwipeBackActivity;
 
-public class Main2Activity extends AppCompatActivity
+public class Main2Activity extends SwipeBackActivity
 {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    public int loadLayout()
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        return R.layout.activity_main2;
+    }
+
+    @Override
+    public void initViews()
+    {
+
+    }
+
+    @Override
+    public Object onCreatePresenter(Bundle savedInstanceState)
+    {
+        return null;
+    }
+
+    @Override
+    public void onExit()
+    {
+
     }
 }

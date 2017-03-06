@@ -87,7 +87,9 @@ public class MainActivity extends SwipeBackActivity<ITestCompact.IPresenter> imp
                 System.out.println("55555");
 //                removeFragment(blankFragment);
 //                startActivity(new Intent(MainActivity.this, MainActivity.class));
-                ZRouter.getInstance().create(IRouterUri.class).jumpToGoodsDetail("1001", "haha");
+                IRouterUri routerUri = ZRouter.getInstance().create(IRouterUri.class);
+                String haha = routerUri.jumpToGoodsDetail("1001", "haha");
+                System.out.println("RRRR:  " + haha);
             }
         });
     }

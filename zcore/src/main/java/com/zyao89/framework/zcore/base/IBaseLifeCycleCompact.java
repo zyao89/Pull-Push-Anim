@@ -1,6 +1,7 @@
 package com.zyao89.framework.zcore.base;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.view.View;
 
 /**
@@ -12,7 +13,7 @@ interface IBaseLifeCycleCompact<P>
 
     void onPrepareCreate(Bundle savedInstanceState);
 
-    int loadLayout();
+    @LayoutRes int loadLayout();
 
     void initViews();
 
